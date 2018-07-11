@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#000000">
+    <!--
+      manifest.json provides metadata used when your web app is added to the
+      homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
+    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
+    <link rel="stylesheet" href="./css/main.css">
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>番茄时钟</title>
+    <script>
+      (function() {
+  window.accurateInterval = function(fn, time) {
+    var cancel, nextAt, timeout, wrapper;
+    /* 这个值是定时器下次应该调用的时刻*/
+    nextAt = new Date().getTime() + time;
+    /* 维持一份对定时器ID的引用，以便取消定时器 */
+    timeout = null;
+    /* 创建一个函数来包裹要运行的回调函数。
+     * 该函数用于指定下次调用和取消回调时要用到的id。
+     */
+    wrapper = function() {
+      nextAt += time;
+      timeout = setTimeout(wrapper, nextAt - new Date().getTime());
+      return fn();
+    };
+    /* 当调用cancel时，清除下次的调用计划*/
+    cancel = function() {
+      return clearTimeout(timeout);
+    };
+    /*指定首次调用的计划*/
+    timeout = setTimeout(wrapper, nextAt - new Date().getTime());
+    /* 返回包含cancel函数的对象，以便以后取消定时 */
+    return {
+      cancel: cancel
+    };
+  };
+}).call(this);
+    </script>
+  </head>
+  <body>
+    <noscript>
+      You need to enable JavaScript to run this app.
+    </noscript>
+    <div id="root"></div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+    
+  </body>
+</html>

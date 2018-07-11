@@ -1,0 +1,8 @@
+@font-face {font-family: "Digital V1";
+  src: url("../fonts/e2b9630cd56b1778e841e805b47c9347.eot"); /* IE9*/
+  src: url("../fonts/e2b9630cd56b1778e841e805b47c9347.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+  url("../fonts/e2b9630cd56b1778e841e805b47c9347.woff2") format("woff2"), /* chrome、firefox */
+  url("../fonts/e2b9630cd56b1778e841e805b47c9347.woff") format("woff"), /* chrome、firefox */
+  url("../fonts/e2b9630cd56b1778e841e805b47c9347.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+  url("../fonts/e2b9630cd56b1778e841e805b47c9347.svg#Digital V1") format("svg"); /* iOS 4.1- */
+}
